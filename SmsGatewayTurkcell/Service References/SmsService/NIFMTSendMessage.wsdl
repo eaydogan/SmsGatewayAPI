@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://sdp.turkcell.com.tr/wsdl/generated" xmlns:sdp="http://sdp.turkcell.com.tr/mapping/generated" xmlns:tso="http://sdp.turkcell.com/mapping/TSO" xmlns="http://schemas.xmlsoap.org/wsdl/" name="NIFMTSendMessage" targetNamespace="http://sdp.turkcell.com.tr/wsdl/generated" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://sdp.turkcell.com.tr/mapping/generated">
+      <xsd:import schemaLocation="TSOMapping.xsd" namespace="http://sdp.turkcell.com/mapping/TSO" />
+      <xsd:element name="token">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="sessionId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="transaction-list">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="transaction-id" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SendSMSInput">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EXPIRY_DATE" type="tso:dateTime" />
+            <xsd:element minOccurs="0" name="MESSAGE_CLASS">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:enumeration value="0" />
+                  <xsd:enumeration value="1" />
+                  <xsd:enumeration value="2" />
+                  <xsd:enumeration value="3" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="S_DATE" type="tso:dateTime" />
+            <xsd:element minOccurs="0" name="SENDER" type="xsd:string" />
+            <xsd:element name="SHORT_NUMBER" type="xsd:string" />
+            <xsd:element minOccurs="0" name="SRC_MSISDN" type="xsd:string" />
+            <xsd:element minOccurs="0" name="NREQ" type="xsd:string" />
+            <xsd:element name="TO_RECEIVERS">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" name="msisdn" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="MESSAGE_BODY">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" name="message" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SendBinarySMSInput">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EXPIRY_DATE" type="tso:dateTime" />
+            <xsd:element minOccurs="0" name="MESSAGE_CLASS">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:enumeration value="0" />
+                  <xsd:enumeration value="1" />
+                  <xsd:enumeration value="2" />
+                  <xsd:enumeration value="3" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="S_DATE" type="tso:dateTime" />
+            <xsd:element minOccurs="0" name="SENDER" type="xsd:string" />
+            <xsd:element name="SHORT_NUMBER" type="xsd:string" />
+            <xsd:element minOccurs="0" name="SRC_MSISDN" type="xsd:string" />
+            <xsd:element minOccurs="0" name="NREQ" type="xsd:string" />
+            <xsd:element name="TO_RECEIVERS">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" name="msisdn" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element ref="tso:DELIVERY_CONTENT" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SendMMSInput">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="SUBJECT" type="xsd:string" />
+            <xsd:element minOccurs="0" name="EXPIRY_DATE" type="tso:dateTime" />
+            <xsd:element minOccurs="0" name="MESSAGE_CLASS">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:enumeration value="0" />
+                  <xsd:enumeration value="1" />
+                  <xsd:enumeration value="2" />
+                  <xsd:enumeration value="3" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="S_DATE" type="tso:dateTime" />
+            <xsd:element minOccurs="0" name="TIMESTAMP" type="tso:dateTime" />
+            <xsd:element name="SHORT_NUMBER" type="xsd:string" />
+            <xsd:element minOccurs="0" name="SRC_MSISDN" type="xsd:string" />
+            <xsd:element minOccurs="0" name="NREQ" type="xsd:string" />
+            <xsd:element name="TO_RECEIVERS">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" name="msisdn" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="MESSAGE_BODY">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" name="message" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="MIME_DATA" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SendWAPPushInput">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="EXPIRY_DATE" type="tso:dateTime" />
+            <xsd:element minOccurs="0" name="S_DATE" type="tso:dateTime" />
+            <xsd:element minOccurs="0" name="SENDER" type="xsd:string" />
+            <xsd:element name="SHORT_NUMBER" type="xsd:string" />
+            <xsd:element minOccurs="0" name="SRC_MSISDN" type="xsd:string" />
+            <xsd:element minOccurs="0" name="NREQ" type="xsd:string" />
+            <xsd:element name="TO_RECEIVERS">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" name="msisdn" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="MESSAGE_BODY">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" name="message" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="MESSAGE_HREF">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" name="HREF" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SendSMSOutput">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="statusCode">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" name="value" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="errorCode">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="errorDescription">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element ref="tso:TSOresult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SendBinarySMSOutput">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="statusCode">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" name="value" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="errorCode">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="errorDescription">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element ref="tso:TSOresult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SendMMSOutput">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="statusCode">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" name="value" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="errorCode">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="errorDescription">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element ref="tso:TSOresult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SendWAPPushOutput">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="statusCode">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element maxOccurs="unbounded" name="value" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="errorCode">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="errorDescription">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" maxOccurs="unbounded" name="value" type="xsd:string" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element ref="tso:TSOresult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="SessionHeader">
+    <wsdl:part name="headerPart" element="sdp:token" />
+  </wsdl:message>
+  <wsdl:message name="TransactionHeader">
+    <wsdl:part name="transactionPart" element="sdp:transaction-list" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSRequest">
+    <wsdl:part name="requestPart" element="sdp:SendSMSInput" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSResponse">
+    <wsdl:part name="requestPart" element="sdp:SendSMSOutput" />
+  </wsdl:message>
+  <wsdl:message name="SendBinarySMSRequest">
+    <wsdl:part name="requestPart" element="sdp:SendBinarySMSInput" />
+  </wsdl:message>
+  <wsdl:message name="SendBinarySMSResponse">
+    <wsdl:part name="requestPart" element="sdp:SendBinarySMSOutput" />
+  </wsdl:message>
+  <wsdl:message name="SendMMSRequest">
+    <wsdl:part name="requestPart" element="sdp:SendMMSInput" />
+  </wsdl:message>
+  <wsdl:message name="SendMMSResponse">
+    <wsdl:part name="requestPart" element="sdp:SendMMSOutput" />
+  </wsdl:message>
+  <wsdl:message name="SendWAPPushRequest">
+    <wsdl:part name="requestPart" element="sdp:SendWAPPushInput" />
+  </wsdl:message>
+  <wsdl:message name="SendWAPPushResponse">
+    <wsdl:part name="requestPart" element="sdp:SendWAPPushOutput" />
+  </wsdl:message>
+  <wsdl:portType name="NIFSendMessagePortType">
+    <wsdl:operation name="SendSMS">
+      <wsdl:input message="tns:SendSMSRequest" />
+      <wsdl:output message="tns:SendSMSResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SendBinarySMS">
+      <wsdl:input message="tns:SendBinarySMSRequest" />
+      <wsdl:output message="tns:SendBinarySMSResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMMS">
+      <wsdl:input message="tns:SendMMSRequest" />
+      <wsdl:output message="tns:SendMMSResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWAPPush">
+      <wsdl:input message="tns:SendWAPPushRequest" />
+      <wsdl:output message="tns:SendWAPPushResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NIFSendMessageBinding" type="tns:NIFSendMessagePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendSMS">
+      <soap:operation soapAction="http://sdp.turkcell.com.tr/services/action/SendMessage/SendSMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SessionHeader" part="headerPart" use="literal" />
+        <soap:header message="tns:TransactionHeader" part="transactionPart" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendBinarySMS">
+      <soap:operation soapAction="http://sdp.turkcell.com.tr/services/action/SendMessage/SendBinarySMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SessionHeader" part="headerPart" use="literal" />
+        <soap:header message="tns:TransactionHeader" part="transactionPart" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMMS">
+      <soap:operation soapAction="http://sdp.turkcell.com.tr/services/action/SendMessage/SendMMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SessionHeader" part="headerPart" use="literal" />
+        <soap:header message="tns:TransactionHeader" part="transactionPart" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWAPPush">
+      <soap:operation soapAction="http://sdp.turkcell.com.tr/services/action/SendMessage/SendWAPPush" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SessionHeader" part="headerPart" use="literal" />
+        <soap:header message="tns:TransactionHeader" part="transactionPart" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NIFSendMessage">
+    <wsdl:port name="NIFSendMessagePort" binding="tns:NIFSendMessageBinding">
+      <soap:address location="http://partnerportal.turkcell.com.tr/spgw/proxy/external/SendMessage" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

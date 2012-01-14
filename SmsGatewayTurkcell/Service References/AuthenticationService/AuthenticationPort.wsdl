@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:intf="urn:SPGW" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="urn:SPGW" targetNamespace="urn:SPGW" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types />
+  <wsdl:message name="createSessionRequest">
+    <wsdl:part name="spId" type="xsd:string" />
+    <wsdl:part name="serviceVariantId" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="createSessionResponse">
+    <wsdl:part name="sessionId" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="Authentication">
+    <wsdl:operation name="createSession" parameterOrder="spId serviceVariantId password">
+      <wsdl:input name="createSessionRequest" message="impl:createSessionRequest" />
+      <wsdl:output name="createSessionResponse" message="impl:createSessionResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthenticationPortSoapBinding" type="impl:Authentication">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="createSession">
+      <wsdlsoap:operation soapAction="http://spgw.turkcell.com.tr/service/createsession" />
+      <wsdl:input name="createSessionRequest">
+        <wsdlsoap:body use="literal" namespace="urn:SPGW" />
+      </wsdl:input>
+      <wsdl:output name="createSessionResponse">
+        <wsdlsoap:body use="literal" namespace="urn:SPGW" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthenticationService">
+    <wsdl:port name="AuthenticationPort" binding="impl:AuthenticationPortSoapBinding">
+      <wsdlsoap:address location="http://partnerportal.turkcell.com.tr/spgw/services/AuthenticationPort" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

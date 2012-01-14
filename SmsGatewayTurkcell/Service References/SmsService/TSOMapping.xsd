@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://sdp.turkcell.com/mapping/TSO" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://sdp.turkcell.com/mapping/TSO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="dateTime">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="time">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-2][0-9]:[0-6][0-9]" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DELIVERY_CONTENT" type="DELIVERY_CONTENT_TYPE" />
+  <xs:complexType name="DELIVERY_CONTENT_TYPE">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CITEM_LIST" type="CITEM_LIST_TYPE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CITEM_LIST_TYPE">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="CITEM" type="CITEM_TYPE" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CITEM_TYPE">
+    <xs:sequence>
+      <xs:element name="CITEM_TEXT" type="xs:string" />
+      <xs:element name="XSER" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TSOresult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="statusCode" />
+        <xs:element minOccurs="0" ref="errorCode" />
+        <xs:element minOccurs="0" ref="errorDescription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="errorCode" type="xs:string" />
+  <xs:element name="errorDescription" type="xs:string" />
+  <xs:element name="statusCode" type="xs:string" />
+</xs:schema>
